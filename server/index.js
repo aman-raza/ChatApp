@@ -12,6 +12,19 @@ const io = socket(server);
 
 io.on('connection', (socket) => {
     console.log('We have a new user connection!!!');
+
+    socket.on('join',({ name, room }, callback) => {
+        console.log(name, room);
+
+        const error = true;
+
+        if(error) {
+            return callback({error: 'error'});
+        }
+
+        callback();
+    });
+
     socket.on('disconnect', () => {
         console.log('User disconnected!!!');
     });
